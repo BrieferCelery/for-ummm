@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :posts
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  post "/posts/:id/comments", to: "comments#create", as: "comments"
+
+  get "/", to: "posts#index", as: "root"
 end
