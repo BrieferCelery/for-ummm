@@ -2,10 +2,5 @@
 
 <%= render 'form', post: @post %>
 
-<%= form_with(model: @post, local: true) do |form| %>
-   <%= form.label :picture %>
-   <%= form.file_field :picture %>
-<% end %>
-
 
 <%= link_to 'Back', posts_path %>
