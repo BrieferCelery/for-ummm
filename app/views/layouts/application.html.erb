@@ -7,19 +7,86 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
   <body>
-      <nav>
-         <% if user_signed_in? %>
-            <p>Welcome, <%= current_user.email %>! | <%= link_to 'Logout', destroy_user_session_path, method: "delete" %></p>
-         <% else %>
-            <p><%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %></p>
-         <% end %> 
-      </nav>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+
+      <%= link_to root_path do %>
+      <%= image_tag("forummm-logo.png", alt: "logo", class: "navbar-brand d-flex align-items-center") %>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "About", "/about", class: "nav-link" %>
+          </li>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Forum", "/", class: "nav-link" %>
+          </li>
+        </ul>
+            
+        <% if user_signed_in? %>
+
+        <ul class="nav navbar-nav justify-content-end">
+          <li class="nav-item active">
+          <%= link_to "Edit Account", edit_user_registration_path, method: "edit" %>
+          </li>
+          <li>
+            <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+          </li>
+        </ul>
+
+        <% else %>
+
+        <ul class="nav navbar-nav justify-content-end">
+          <li class="nav-item active">
+            <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        </ul>
+
+        <% end %>
+      </div>
+    </nav>
+
+    <div>
+      <% if user_signed_in? %>
+        <p>Welcome, <%= current_user.email %>! | <%= link_to 'Logout', destroy_user_session_path, method: "delete" %></p>
+      <% else %>
+        <p><%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %></p>
+      <% end %> 
+    </div>
       
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer">
+        <div class="row">
+          <div class="col">
+            <nav class="nav justify-content-center">
+                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="#">Follow Us</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer> 
+
   </body>
 </html>
