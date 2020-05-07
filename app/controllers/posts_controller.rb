@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize, only: [:new, :create]
 
   # GET /posts
   # GET /posts.json
@@ -65,6 +66,13 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def authorize
+      if !current_user.has_role?(:admin)
+        flash[:alert] = "please create an account to create a post"
+        redirect_to root_path
+      end
+    end
+
     def set_post
       @post = Post.find(params[:id])
     end
