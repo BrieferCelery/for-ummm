@@ -14,9 +14,7 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on "New Post"
 
-    fill_in "Body", with: @post.body
-    fill_in "Postedby", with: @post.postedby
-    fill_in "Replytopost", with: @post.replytopost
+    fill_in "Content", with: @post.content
     fill_in "Title", with: @post.title
     click_on "Create Post"
 
@@ -28,9 +26,7 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on "Edit", match: :first
 
-    fill_in "Body", with: @post.body
-    fill_in "Postedby", with: @post.postedby
-    fill_in "Replytopost", with: @post.replytopost
+    fill_in "Content", with: @post.content
     fill_in "Title", with: @post.title
     click_on "Update Post"
 
