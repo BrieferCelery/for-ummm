@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   
   post "/posts/:id/comments", to: "comments#create", as: "comments"
 
-  get "/", to: "posts#index", as: "root"
+  root to: "home#index"
+
+  get "/about", to: "home#about", as: "about"
+  
 end
