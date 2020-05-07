@@ -10,6 +10,14 @@
   <%= @post.content %>
 </p>
 
+<p>
+  <% if @post.picture.attached? == false %>
+     No picture to display
+  <% else %>
+    <%= image_tag @post.picture, width: 120 %>
+  <% end %>
+</p>
+
 <h2>
   <%= @post.comments.count %>
   Comments

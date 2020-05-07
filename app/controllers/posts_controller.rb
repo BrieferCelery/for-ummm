@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    @post.picture.attach(params[:post][:picture])
 
     respond_to do |format|
       if @post.save
