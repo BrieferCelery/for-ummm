@@ -1,67 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
 
-  <%= link_to root_path do %>
-  <%= image_tag("forummm-logo.png", alt: "logo", class: "navbar-brand d-flex align-items-center") %>
-  <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Home", root_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "About", "/about", class: "nav-link" %>
-      </li>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Forum", "/", class: "nav-link" %>
-      </li>
-    </ul>
-        
-    <% if user_signed_in? %>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <%= link_to "About", '/about' , class: "nav-link" %>
-              </li>
-            <li class="nav-item active">
-              <%= link_to "Home", '/' , class: "nav-link" %>
-            </li>
-          </ul>
-    </div>
-
-    <ul class="nav navbar-nav justify-content-end">
-      <div class="dropdown">
-        <button class="btn btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        
-            </button>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: "delete", class:"dropdown-item" %>
-              </div>
-      </div>
-    </ul>
-
-    <% else %>
-
-    <ul class="nav navbar-nav justify-content-end">
-      <li class="nav-item active">
-        <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-      </li>
-    </ul>
-
-    <% end %>
-  </div>
-</nav>
-
-    <!-- Jumbotron -->
+<!-- Jumbotron -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">  
     <div class="main">
@@ -69,22 +8,8 @@
         <p class="text-center">Build your coding experience with us.</p>
         <h2 class="text-center">Inspire</h2>
         <p class="text-center"> Share your life experiences and empower other developers to dream bigger!</p>
-        <a class="btn btn-info btn-lg" href="#" role="button">Join Our Community</a>
+        <%= link_to "Join Our Community", new_user_registration_path, class: "btn btn-info btn-lg", type: "button" %>
     </div>
   </div>
 </div>
   
-<!-- Footer -->
-<footer>
-  <div class="footer">
-    <div class="row">
-      <div class="col">
-        <nav class="nav justify-content-center">
-            <a class="nav-link" href="#">About Us</a>
-            <a class="nav-link" href="#">Contact Us</a>
-            <a class="nav-link" href="#">Follow Us</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-</footer> 

@@ -8,6 +8,5 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get "/about", to: "home#about", as: "about"
-  get "/navbar", to: "home#navbar", as: "navbar"
   
 end
