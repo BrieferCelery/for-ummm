@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   post "/posts/:id/comments", to: "comments#create", as: "comments"
 
   root to: "home#index"
+
+  get "/about", to: "home#about", as: "about"
+  get "/navbar", to: "home#navbar", as: "navbar"
+  
 end
