@@ -1,33 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>All Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Published</th>
-      <th>Creator</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= time_ago_in_words(post.created_at)%> ago</td>
-        <td><%= post.user.email %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div style="background-image: url(/assets/splash-background.jpg); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover;">
+<div class="container">
 
 <br>
+<br>
+<div class="container">
+<p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+      <% if user_signed_in? %>
+        <p>Welcome, <%= current_user.email %>! | <%= link_to 'Logout', destroy_user_session_path, method: "delete" %></p>
+      <% else %>
+        <p><%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign Up', new_user_session_path %></p>
+      <% end %> 
+    </div>
+<h1>TRENDING POSTS</h1>
 
-<%= link_to 'New Post', new_post_path %>
+<br>
+<%= link_to 'New Post', new_post_path, class: "btn btn-info"%>
+<br>
+<br>
+<br>
+<% @posts.each do |post| %>
+<div class="card border-info">
+  <div class="card-header">
+    <%= post.content %>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-info"><%= post.content %></p>
+    <p class="card-text"><small class="text-muted">posted <%= time_ago_in_words(post.created_at)%> ago | by <%= post.user.email %> </small></p>
+    <tr>
+        <td><%= link_to 'Show', post %> | </td>
+        <td><%= link_to 'Edit', edit_post_path(post) %> | </td>
+        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  </div>
+</div>
+<br>
+<% end %>
+<br>
+<br>
+<br>
+
+</div>
+</div>

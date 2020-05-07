@@ -31,18 +31,19 @@
           </li>
           </li>
           <li class="nav-item active">
-            <%= link_to "Forum", "/", class: "nav-link" %>
+            <%= link_to "Forum", posts_path, class: "nav-link" %>
           </li>
         </ul>
             
         <% if user_signed_in? %>
 
         <ul class="nav navbar-nav justify-content-end">
+          
           <li class="nav-item active">
-          <%= link_to "Edit Account", edit_user_registration_path, method: "edit" %>
+            <%= link_to "Edit Account", edit_user_registration_path, method: "edit", class: "nav-link"%>
           </li>
-          <li>
-            <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+          <li class="nav-item active">
+            <%= link_to "Log Out", destroy_user_session_path, method: "delete", class: "nav-link" %>
           </li>
         </ul>
 
@@ -53,13 +54,14 @@
             <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Sign Up", new_user_session_path, class: "nav-link" %>
           </li>
         </ul>
 
         <% end %>
       </div>
     </nav>
+
 
     <div>
       <% if user_signed_in? %>
@@ -69,9 +71,9 @@
       <% end %> 
     </div>
       
+       <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-       <!-- <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>-->
 
     <%= yield %>
 
