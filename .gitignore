@@ -30,7 +30,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-Gemfile.lock
 /config/credentials/development.key
 /config/database.yml
 
