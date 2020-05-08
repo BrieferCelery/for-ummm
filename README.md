@@ -1,24 +1,6 @@
-# README
+# For-ummm
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![splash page](docs/splash.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## What is For-ummm?
+For-ummm is a general pupose forum engine where users can post and create a discussion with fellow users on whatever topic they like. Users have the ability to create, view, edit and delete posts. 
