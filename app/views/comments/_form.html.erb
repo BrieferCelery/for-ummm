@@ -1,8 +1,6 @@
 <br>
 <br>
-<br>
-<br>
 <%= form_with(model: comment, local: true) do |form| %>
   <%= form.text_field :comment %>
-  <%= form.submit %>
+  <button type="button" class="btn btn-light"><%= form.submit%></button>
 <% end %>
