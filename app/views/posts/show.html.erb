@@ -1,3 +1,4 @@
+<div style="background-image: url(/assets/keyboard-background.jpg); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover;">
 <br>
 <br>
 <br>
@@ -6,36 +7,46 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<div class="card border-info">
+  <p class="card-img-overlay">
+    <% if @post.picture.attached? == false %>
+      No picture to display
+    <% else %>
+      <%= image_tag @post.picture, width: 120 %>
+    <% end %>
+  </p>
+  <br>
+  <br>
+  <br>
+  <div class="card-header bg-info text-white">
   <%= @post.title %>
-</p>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-info"><%= @post.content %></p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago | <%= @post.comments.count %> Comments</small></p>
+  </div>
+  <div class="card-body bg-dark">
+    <h4 class="card-text text-info">Comments</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-white"><%= render @post.comments%></p>
+  </div>
+</div>
+<br>
+<br>
+<br>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <% if @post.picture.attached? == false %>
-     No picture to display
-  <% else %>
-    <%= image_tag @post.picture, width: 120 %>
-  <% end %>
-</p>
-
-<h2>
-  <%= @post.comments.count %>
-  Comments
-  <%= render @post.comments %>
-</h2>
-
-<h3>Reply to thread
+<div class="container">
+<div class="card-body bg-info text-white">
+<h4>Reply to thread
   <%= render "comments/form", comment:Comment.new %>
-</h3>
+</h4>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+
+<%= link_to 'Edit', edit_post_path(@post), class: "text-white" %> |
+<%= link_to 'Back', posts_path, class:"text-white"%>
+</div>
 <br>
 <br>
 <br>
